@@ -59,8 +59,34 @@ python3 build.py
 - 상단/하위 메뉴와 푸터에 키워드·지역명·역명 대량 나열 없음 (하위 메뉴는 지역명·역명만)
 - 모든 페이지 본문은 페이지별 고유 작성 (지역명만 바꾼 복붙 없음)
 
-## 배포 전 해야 할 일
+## 색인(인덱싱) 운영
 
-1. `content/site.py`의 `BASE_URL`을 실제 도메인으로 변경
-2. `python3 build.py` 재실행 (canonical·sitemap·robots.txt에 반영됨)
-3. Google Search Console에 `sitemap.xml` 제출
+배포 도메인: **https://seongbuk-massage.pages.dev** (`content/site.py` `BASE_URL`)
+
+빌드 시 자동 생성되는 색인 파일:
+
+- `sitemap.xml` — 색인 대상 49페이지 + `lastmod` 포함
+- `rss.xml` — RSS 2.0 피드 (네이버 서치어드바이저 RSS 제출용)
+- `robots.txt` — 전체 허용 + Googlebot·Yeti(네이버)·Bingbot 명시 허용 + Sitemap 위치
+- `{INDEXNOW_KEY}.txt` — IndexNow 도메인 소유 확인 키 파일
+
+### 검색엔진 등록 절차
+
+1. **구글 Search Console**: 속성 등록 → `sitemap.xml` 제출
+   (사이트맵 핑 엔드포인트는 2023년 폐지되어 Search Console 제출이 공식 경로)
+2. **네이버 서치어드바이저**: 소유 확인(메인페이지 메타태그 등록됨) →
+   `sitemap.xml` 제출 + `rss.xml` 제출
+3. **IndexNow 즉시 통보** (빙·네이버 등 참여 엔진):
+   ```bash
+   python3 scripts/indexnow_submit.py          # 사이트맵 전체 URL 통보
+   python3 scripts/indexnow_submit.py <URL>    # 수정·추가한 URL만 통보
+   ```
+   페이지를 추가·수정해 배포할 때마다 실행하면 됩니다.
+4. **구글 Indexing API** (선택): `scripts/google_indexing_submit.py` 참고.
+   공식적으로는 채용공고·라이브방송 페이지용 API이므로 일반 페이지는
+   Search Console 사이트맵 제출을 기본으로 사용하세요.
+
+### 콘텐츠 수정 시
+
+1. `content/` 수정 → `python3 build.py` 재실행
+2. 커밋·배포 후 `python3 scripts/indexnow_submit.py` 로 변경 URL 통보

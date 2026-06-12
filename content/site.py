@@ -1,6 +1,8 @@
 # 사이트 공통 설정
-# 배포 도메인 확정 후 BASE_URL 을 실제 도메인으로 변경하세요.
-BASE_URL = "https://www.gandago.example.com"
+BASE_URL = "https://seongbuk-massage.pages.dev"
+
+# IndexNow 인증 키 — 빌드 시 /{키}.txt 파일로 생성되어 도메인 소유를 증명한다.
+INDEXNOW_KEY = "86342216957187b8329f3d200e9f130d"
 
 BRAND = "간다GO"
 PHONE = "0508-202-4719"

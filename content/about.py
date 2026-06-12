@@ -5,7 +5,7 @@ from .site import BRAND, PHONE, PHONE_DISPLAY
 PAGE = {
     "path": "about/",
     "title": f"운영자 소개·콘텐츠 원칙 | {BRAND}",
-    "desc": f"{BRAND}의 운영 주체와 콘텐츠 제작·검수 과정, 콘텐츠 기준 5원칙, 책임 한계를 공개합니다. 성북구 안내 페이지가 어떤 기준으로 쓰이는지 확인하세요.",
+    "desc": f"{BRAND}의 운영 주체와 콘텐츠 제작·검수 과정, 콘텐츠 기준 5원칙, 책임 한계를 공개합니다. 안내 작성 기준을 확인하세요.",
     "h1": "운영자 소개와 콘텐츠 원칙",
     "breadcrumb": [("운영자 소개", None)],
     "body": f"""
