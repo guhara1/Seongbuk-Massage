@@ -211,13 +211,16 @@ _BODY = f"""
 </section>
 """
 
+# 네이버 서치어드바이저 사이트 소유 확인
+_NAVER_VERIFY = '<meta name="naver-site-verification" content="46f0c6b7c26ef95c657123a44b16dbc639afd2df" />\n'
+
 PAGE = {
     "path": "",
     "title": "성북 출장마사지·홈타이 | 성북구 전지역 방문 마사지 예약 안내",
     "desc": "성북 출장마사지·홈타이 안내 페이지입니다. 성신여대입구역, 길음역, 정릉동, 월곡동, 석관동 등 성북구 주요 지역과 지하철역 인근 예약 정보를 확인해보세요.",
     "h1": "성북 출장마사지·홈타이 예약 안내",
     "body": _BODY,
-    "extra_head": _JSONLD,
+    "extra_head": _NAVER_VERIFY + _JSONLD,
     "breadcrumb": [],
     "hero": _HERO,
 }
